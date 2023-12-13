@@ -3,8 +3,8 @@ from keras import layers, models
 from keras.preprocessing.image import ImageDataGenerator
 
 # 데이터셋 디렉토리 설정
-train_dir = 'trainData'
-validation_dir = 'validData'
+train_dir = 'trainDataScoliosis'
+validation_dir = 'validDataScoliosis'
 
 # 이미지 데이터 증강을 위한 설정
 train_datagen = ImageDataGenerator(
