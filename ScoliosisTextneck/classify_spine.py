@@ -8,14 +8,13 @@ model = tf.keras.models.load_model('spine_model_tf.keras')
 
 # 폴더에 있는 모든 이미지 파일 경로 가져오기
 image_folder = 'exampleOf_classify_spine'  # 실제 이미지가 있는 폴더 경로로 변경
-image_files = [os.path.join(image_folder, file) for file in os.listdir(image_folder) if
-               file.endswith(('jpg', 'jpeg', 'png'))]
-
+image_files = [os.path.join(image_folder, file) for file in os.listdir(image_folder) if file.endswith(('jpg', 'jpeg', 'png'))]
 
 # 이미지를 분류하는 함수
 def classify_spine_batch(image_paths):
     results = []
     for image_path in image_paths:
+        # 이미지 크기를 모델이 예상하는 크기로 조절
         img = image.load_img(image_path, target_size=(224, 224))
         img_array = image.img_to_array(img)
         img_array = np.expand_dims(img_array, axis=0)
@@ -31,7 +30,6 @@ def classify_spine_batch(image_paths):
         results.append((image_path, result))
 
     return results
-
 
 # 이미지들에 대한 결과 얻기
 results = classify_spine_batch(image_files)
